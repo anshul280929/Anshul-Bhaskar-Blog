@@ -1,23 +1,55 @@
-import { createClient } from "@/lib/supabase/server";
-import BlogCard from "@/components/blog/BlogCard";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Blog",
-  description:
-    "Read articles about AI, startups, computer science, and technology by Anshul Bhaskar.",
+import { useState, useEffect, useRef } from "react";
+import BlogCard from "@/components/blog/BlogCard";
+
+type BlogCardPost = {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string | null;
+  cover_image_url: string | null;
+  tags: string[];
+  published_at: string;
+  content: Record<string, unknown>;
 };
 
-export const revalidate = 60;
+// Module-level cache — survives across navigations
+let cachedPosts: BlogCardPost[] | null = null;
+let cacheTimestamp = 0;
+const CACHE_TTL = 60_000; // 60 seconds
 
-export default async function BlogPage() {
-  const supabase = await createClient();
+export default function BlogPage() {
+  const [posts, setPosts] = useState<BlogCardPost[]>(cachedPosts ?? []);
+  const [isLoading, setIsLoading] = useState(!cachedPosts);
+  const fetchedRef = useRef(false);
 
-  const { data: posts } = await supabase
-    .from("posts")
-    .select("id, title, slug, excerpt, cover_image_url, tags, published_at, content")
-    .eq("status", "published")
-    .order("published_at", { ascending: false });
+  useEffect(() => {
+    const now = Date.now();
+    const cacheValid = cachedPosts && now - cacheTimestamp < CACHE_TTL;
+
+    if (cacheValid) {
+      setPosts(cachedPosts!);
+      setIsLoading(false);
+      return;
+    }
+
+    // Prevent double-fetch in StrictMode
+    if (fetchedRef.current) return;
+    fetchedRef.current = true;
+
+    fetch("/api/posts")
+      .then((res) => res.json())
+      .then((data: BlogCardPost[]) => {
+        cachedPosts = data;
+        cacheTimestamp = Date.now();
+        setPosts(data);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setIsLoading(false);
+      });
+  }, []);
 
   return (
     <div className="container-wide" style={{ padding: "3rem 1.5rem" }}>
@@ -45,8 +77,64 @@ export default async function BlogPage() {
         </p>
       </div>
 
-      {/* Posts Grid */}
-      {posts && posts.length > 0 ? (
+      {/* Loading Skeleton */}
+      {isLoading ? (
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(350px, 1fr))",
+            gap: "1.5rem",
+          }}
+        >
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div
+              key={i}
+              className="glass-card"
+              style={{ overflow: "hidden" }}
+            >
+              <div
+                style={{
+                  width: "100%",
+                  aspectRatio: "16/9",
+                  background: "var(--color-bg-tertiary)",
+                  animation: "pulse 1.5s ease-in-out infinite",
+                }}
+              />
+              <div style={{ padding: "1.5rem" }}>
+                <div
+                  style={{
+                    height: 12,
+                    width: "40%",
+                    borderRadius: 6,
+                    background: "var(--color-bg-tertiary)",
+                    marginBottom: "0.75rem",
+                    animation: "pulse 1.5s ease-in-out infinite",
+                  }}
+                />
+                <div
+                  style={{
+                    height: 20,
+                    width: "85%",
+                    borderRadius: 6,
+                    background: "var(--color-bg-tertiary)",
+                    marginBottom: "0.5rem",
+                    animation: "pulse 1.5s ease-in-out 0.1s infinite",
+                  }}
+                />
+                <div
+                  style={{
+                    height: 14,
+                    width: "65%",
+                    borderRadius: 6,
+                    background: "var(--color-bg-tertiary)",
+                    animation: "pulse 1.5s ease-in-out 0.2s infinite",
+                  }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : posts && posts.length > 0 ? (
         <div
           style={{
             display: "grid",
@@ -78,17 +166,13 @@ export default async function BlogPage() {
           </p>
         </div>
       )}
+
+      <style jsx>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 0.4; }
+          50% { opacity: 0.15; }
+        }
+      `}</style>
     </div>
   );
 }
-
-type BlogCardPost = {
-  id: string;
-  title: string;
-  slug: string;
-  excerpt: string | null;
-  cover_image_url: string | null;
-  tags: string[];
-  published_at: string;
-  content: Record<string, unknown>;
-};

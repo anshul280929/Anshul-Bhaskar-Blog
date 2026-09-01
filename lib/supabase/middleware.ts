@@ -13,6 +13,13 @@ export async function updateSession(request: NextRequest) {
     request,
   });
 
+  // Skip auth entirely for public routes — no session check needed
+  const pathname = request.nextUrl.pathname;
+  const isProtectedRoute = pathname.startsWith("/admin") || pathname.startsWith("/login");
+  if (!isProtectedRoute) {
+    return supabaseResponse;
+  }
+
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
