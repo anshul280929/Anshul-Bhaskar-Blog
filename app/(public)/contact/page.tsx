@@ -103,14 +103,14 @@ export default function ContactPage() {
               width: 44,
               height: 44,
               borderRadius: 12,
-              background: "rgba(16, 185, 129, 0.1)",
+              background: "rgba(255, 255, 255, 0.06)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               flexShrink: 0,
             }}
           >
-            <Mail size={20} style={{ color: "var(--color-accent-primary)" }} />
+            <Mail size={20} style={{ color: "var(--color-text-secondary)" }} />
           </div>
           <div>
             <p

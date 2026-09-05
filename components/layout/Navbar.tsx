@@ -49,7 +49,7 @@ export default function Navbar() {
           zIndex: 50,
           transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
           background: isScrolled
-            ? "rgba(6, 6, 10, 0.85)"
+            ? "rgba(10, 10, 10, 0.9)"
             : "transparent",
           backdropFilter: isScrolled ? "blur(20px)" : "none",
           WebkitBackdropFilter: isScrolled ? "blur(20px)" : "none",
@@ -84,8 +84,7 @@ export default function Navbar() {
                 width: 36,
                 height: 36,
                 borderRadius: 10,
-                background:
-                  "linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary))",
+                background: "#333333",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -101,7 +100,7 @@ export default function Navbar() {
               }}
             >
               anshulbhaskar
-              <span style={{ color: "var(--color-accent-primary)" }}>
+              <span style={{ color: "var(--color-text-secondary)" }}>
                 .blog
               </span>
             </span>
@@ -152,8 +151,7 @@ export default function Navbar() {
                       style={{
                         position: "absolute",
                         inset: 0,
-                        background:
-                          "linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary))",
+                        background: "#333333",
                         borderRadius: 8,
                         zIndex: -1,
                       }}
@@ -241,7 +239,7 @@ export default function Navbar() {
               right: 0,
               bottom: 0,
               zIndex: 40,
-              background: "rgba(6, 6, 10, 0.95)",
+              background: "rgba(10, 10, 10, 0.95)",
               backdropFilter: "blur(20px)",
               WebkitBackdropFilter: "blur(20px)",
               padding: "1.5rem",
@@ -281,7 +279,7 @@ export default function Navbar() {
                           : "var(--color-text-secondary)",
                       background:
                         activeToggle?.href === opt.href
-                          ? "linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary))"
+                          ? "#333333"
                           : "transparent",
                       borderRadius: 8,
                       textDecoration: "none",

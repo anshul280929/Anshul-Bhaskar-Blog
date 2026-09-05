@@ -92,12 +92,12 @@ export default function AboutPage() {
             height: 120,
             borderRadius: "50%",
             background:
-              "linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary))",
+              "#333333",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             marginBottom: "1.5rem",
-            boxShadow: "0 0 60px rgba(16, 185, 129, 0.2)",
+            boxShadow: "0 0 60px rgba(0, 0, 0, 0.3)",
           }}
         >
           <Code2 size={48} color="white" />
@@ -117,7 +117,7 @@ export default function AboutPage() {
         <p
           style={{
             fontSize: "1.125rem",
-            color: "var(--color-accent-primary)",
+            color: "var(--color-text-secondary)",
             fontWeight: 500,
             marginBottom: "0.75rem",
           }}
@@ -289,7 +289,7 @@ export default function AboutPage() {
                       gap: "0.375rem",
                       fontSize: "0.8125rem",
                       fontWeight: 500,
-                      color: "var(--color-accent-primary)",
+                      color: "var(--color-text-primary)",
                       textDecoration: "none",
                     }}
                   >

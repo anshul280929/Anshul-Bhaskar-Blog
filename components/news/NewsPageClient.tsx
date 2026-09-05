@@ -85,15 +85,15 @@ export default function NewsPageClient({
               borderRadius: 9999,
               border:
                 activeCategory === cat.key
-                  ? "1px solid var(--color-accent-primary)"
+                  ? "1px solid rgba(255, 255, 255, 0.2)"
                   : "1px solid var(--color-border-default)",
               background:
                 activeCategory === cat.key
-                  ? "rgba(16, 185, 129, 0.15)"
+                  ? "rgba(255, 255, 255, 0.1)"
                   : "var(--color-bg-secondary)",
               color:
                 activeCategory === cat.key
-                  ? "var(--color-accent-primary)"
+                  ? "var(--color-text-primary)"
                   : "var(--color-text-secondary)",
               cursor: "pointer",
               transition: "all 0.2s",
@@ -167,7 +167,7 @@ export default function NewsPageClient({
                     style={{
                       fontSize: "0.75rem",
                       fontWeight: 600,
-                      color: "var(--color-accent-primary)",
+                      color: "var(--color-text-secondary)",
                       textTransform: "uppercase",
                       letterSpacing: "0.05em",
                     }}

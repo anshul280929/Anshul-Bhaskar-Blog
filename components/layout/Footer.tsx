@@ -38,8 +38,7 @@ export default function Footer() {
                   width: 32,
                   height: 32,
                   borderRadius: 8,
-                  background:
-                    "linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary))",
+                  background: "#333333",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -51,7 +50,7 @@ export default function Footer() {
                 style={{ fontWeight: 600, color: "var(--color-text-primary)" }}
               >
                 anshulbhaskar
-                <span style={{ color: "var(--color-accent-primary)" }}>
+                <span style={{ color: "var(--color-text-secondary)" }}>
                   .blog
                 </span>
               </span>

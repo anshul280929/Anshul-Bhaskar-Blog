@@ -30,9 +30,9 @@ export default function HomePage() {
               padding: "0.375rem 1rem",
               fontSize: "0.8125rem",
               fontWeight: 500,
-              color: "var(--color-accent-primary)",
-              background: "rgba(16, 185, 129, 0.1)",
-              border: "1px solid rgba(16, 185, 129, 0.2)",
+              color: "var(--color-text-secondary)",
+              background: "rgba(255, 255, 255, 0.05)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
               borderRadius: 9999,
             }}
           >
@@ -115,7 +115,7 @@ export default function HomePage() {
             height: 400,
             borderRadius: "50%",
             background:
-              "radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, transparent 70%)",
             pointerEvents: "none",
             zIndex: -1,
           }}
@@ -129,7 +129,7 @@ export default function HomePage() {
             height: 350,
             borderRadius: "50%",
             background:
-              "radial-gradient(circle, rgba(5, 150, 105, 0.06) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(255, 255, 255, 0.015) 0%, transparent 70%)",
             pointerEvents: "none",
             zIndex: -1,
           }}

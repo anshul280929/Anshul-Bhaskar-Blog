@@ -1,30 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg-primary: #06060a;
-  --color-bg-secondary: #0d0d14;
-  --color-bg-tertiary: #14141e;
-  --color-bg-card: #111118;
-  --color-bg-card-hover: #1a1a24;
-  --color-bg-glass: rgba(17, 17, 24, 0.7);
+  --color-bg-primary: #0a0a0a;
+  --color-bg-secondary: #111111;
+  --color-bg-tertiary: #1a1a1a;
+  --color-bg-card: #141414;
+  --color-bg-card-hover: #1e1e1e;
+  --color-bg-glass: rgba(14, 14, 14, 0.8);
 
-  --color-border-default: rgba(255, 255, 255, 0.06);
-  --color-border-subtle: rgba(255, 255, 255, 0.03);
-  --color-border-accent: rgba(16, 185, 129, 0.3);
+  --color-border-default: rgba(255, 255, 255, 0.08);
+  --color-border-subtle: rgba(255, 255, 255, 0.04);
+  --color-border-accent: rgba(255, 255, 255, 0.15);
 
-  --color-text-primary: #f0f0f5;
-  --color-text-secondary: #9a9ab0;
-  --color-text-muted: #5a5a72;
+  --color-text-primary: #e8e8e8;
+  --color-text-secondary: #8a8a8a;
+  --color-text-muted: #555555;
 
-  --color-accent-primary: #10b981;
-  --color-accent-secondary: #059669;
-  --color-accent-cyan: #2dd4bf;
-  --color-accent-gradient-start: #10b981;
-  --color-accent-gradient-end: #059669;
+  --color-accent-primary: #a0a0a0;
+  --color-accent-secondary: #787878;
+  --color-accent-cyan: #b0b0b0;
+  --color-accent-gradient-start: #c0c0c0;
+  --color-accent-gradient-end: #888888;
 
-  --color-success: #34d399;
-  --color-warning: #fbbf24;
-  --color-error: #f87171;
+  --color-success: #6ec96e;
+  --color-warning: #d4a844;
+  --color-error: #d46a6a;
 
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -72,7 +72,7 @@ body {
 
 /* ===== SELECTION ===== */
 ::selection {
-  background-color: rgba(16, 185, 129, 0.3);
+  background-color: rgba(160, 160, 160, 0.3);
   color: var(--color-text-primary);
 }
 
@@ -101,15 +101,15 @@ a {
   background: var(--color-bg-card-hover);
   border-color: var(--color-border-accent);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(16, 185, 129, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 /* ===== GRADIENT TEXT ===== */
 .gradient-text {
   background: linear-gradient(
     135deg,
-    var(--color-accent-gradient-start),
-    var(--color-accent-gradient-end)
+    #e0e0e0,
+    #999999
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -128,12 +128,7 @@ a {
   left: -1px;
   right: -1px;
   bottom: -1px;
-  background: linear-gradient(
-    135deg,
-    var(--color-accent-primary),
-    var(--color-accent-secondary),
-    var(--color-accent-cyan)
-  );
+  background: rgba(255, 255, 255, 0.06);
   border-radius: inherit;
   z-index: -1;
   opacity: 0;
@@ -154,13 +149,9 @@ a {
   padding: 0.625rem 1.5rem;
   font-size: 0.875rem;
   font-weight: 500;
-  color: white;
-  background: linear-gradient(
-    135deg,
-    var(--color-accent-gradient-start),
-    var(--color-accent-gradient-end)
-  );
-  border: none;
+  color: #e8e8e8;
+  background: #333333;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -168,9 +159,9 @@ a {
 }
 
 .btn-primary:hover {
-  opacity: 0.9;
+  background: #3d3d3d;
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
 .btn-secondary {
@@ -210,8 +201,8 @@ a {
 }
 
 .input-field:focus {
-  border-color: var(--color-accent-primary);
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 0 3px rgba(160, 160, 160, 0.1);
 }
 
 .input-field::placeholder {
@@ -478,25 +469,8 @@ a {
 .ambient-bg::before {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-      ellipse at 20% 50%,
-      rgba(16, 185, 129, 0.05) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse at 80% 20%,
-      rgba(5, 150, 105, 0.04) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse at 40% 80%,
-      rgba(45, 212, 191, 0.03) 0%,
-      transparent 50%
-    );
+  inset: 0;
+  background: none;
 }
 
 /* ===== TAG/BADGE ===== */
@@ -506,16 +480,16 @@ a {
   padding: 0.25rem 0.75rem;
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--color-accent-primary);
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: var(--color-text-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 9999px;
   transition: all 0.2s;
 }
 
 .tag:hover {
-  background: rgba(16, 185, 129, 0.2);
-  border-color: rgba(16, 185, 129, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 /* ===== RESPONSIVE CONTAINER ===== */

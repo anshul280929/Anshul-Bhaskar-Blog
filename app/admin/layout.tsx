@@ -62,7 +62,7 @@ export default async function AdminLayout({
               height: 32,
               borderRadius: 8,
               background:
-                "linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary))",
+                "linear-gradient(135deg, #333333, #2a2a2a)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",

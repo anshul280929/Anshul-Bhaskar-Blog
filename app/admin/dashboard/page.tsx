@@ -208,16 +208,16 @@ export default async function DashboardPage() {
                       borderRadius: 9999,
                       background:
                         post.status === "published"
-                          ? "rgba(52, 211, 153, 0.1)"
-                          : "rgba(251, 191, 36, 0.1)",
+                          ? "rgba(110, 201, 110, 0.1)"
+                          : "rgba(212, 168, 68, 0.1)",
                       color:
                         post.status === "published"
                           ? "var(--color-success)"
                           : "var(--color-warning)",
                       border:
                         post.status === "published"
-                          ? "1px solid rgba(52, 211, 153, 0.2)"
-                          : "1px solid rgba(251, 191, 36, 0.2)",
+                          ? "1px solid rgba(110, 201, 110, 0.2)"
+                          : "1px solid rgba(212, 168, 68, 0.2)",
                     }}
                   >
                     {post.status}

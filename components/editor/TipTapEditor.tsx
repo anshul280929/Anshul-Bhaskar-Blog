@@ -186,7 +186,7 @@ export default function TipTapEditor({ content, onChange }: TipTapEditorProps) {
         alignItems: "center",
         justifyContent: "center",
         background: isActive
-          ? "rgba(16, 185, 129, 0.2)"
+          ? "rgba(255, 255, 255, 0.12)"
           : "transparent",
         border: "none",
         color: isActive

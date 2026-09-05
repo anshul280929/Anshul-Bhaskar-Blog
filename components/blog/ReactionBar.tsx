@@ -122,10 +122,10 @@ export default function ReactionBar({ postId }: ReactionBarProps) {
             padding: "0.5rem 0.875rem",
             fontSize: "0.875rem",
             background: reaction.hasReacted
-              ? "rgba(16, 185, 129, 0.15)"
+              ? "rgba(255, 255, 255, 0.1)"
               : "var(--color-bg-tertiary)",
             border: reaction.hasReacted
-              ? "1px solid var(--color-accent-primary)"
+              ? "1px solid rgba(255, 255, 255, 0.2)"
               : "1px solid var(--color-border-default)",
             borderRadius: 9999,
             cursor: "pointer",
